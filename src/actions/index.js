@@ -18,3 +18,10 @@ export const clearMsg = () => {
         type: 'CLEAR'
     };
 };
+
+export const deleteMsg = (obj) => {
+    return {
+        type: 'DELETE',
+        payload: obj
+    };
+};
