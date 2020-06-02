@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-
+import Detail from './Detail';
 
 class MsgPane extends React.Component {
     
@@ -20,6 +19,6 @@ const mapStateToProps = (state) => { //name is by convention
 
 const generateList = (array) => {
     console.log(array);
-    return array.map((item) => (<li>{item}</li>))};
+    return array.map((item) => (<li ><Detail val={item}/></li> ))};
 
 export default connect(mapStateToProps,{})(MsgPane);

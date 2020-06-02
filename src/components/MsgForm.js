@@ -1,20 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { sendMsg } from '../actions';
+import { sendMsg, clearMsg } from '../actions';
+
 
 class MsgForm extends React.Component{
+    constructor() {
+        super();
+        this.input = React.createRef();
+        }
+        
+
     render(){
         return (
         <div>
-
-        <div>The number is: {this.props.msgObj.msgTemp}</div>
-            {console.log(this.props.msgObj.msgList)}
-        {console.log("hehe" + this.props.msgObj.msgTemp)}
-        <form id="msgForm" >
-            <input className="inputbox" type="text" id="msgInput" onChange = {(e) =>{this.props.msgObj.msgTemp = e.target.value}}/>
+        {console.log(this.props.msgObj.msgList)}
+        {console.log("hehe " + this.props.msgObj.msgTemp)}
+        <form id="msgForm">
+            <input className="inputbox" type="text" id="msgInput" ref = {this.input} onChange = {(e) =>{this.props.msgObj.msgTemp = e.target.value; }} />
             <br/>
-            <input className="cstomButton" type="button" value="SEND" onClick={() => {this.props.sendMsg(this.props.msgObj.msgTemp)}}/>
-            <button className="customButton" type="button" onClick={() => {this.props.sendMsg(this.props.msgObj.msgTemp);}}>CLEAR</button>
+            <input className="customButton" type="button" value="SEND"  onClick={(e) => {this.props.sendMsg(this.props.msgObj.msgTemp); this.input.current.value=""}}/>
+            <button className="customButton" type="button" onClick={() => {this.props.clearMsg()}}>CLEAR</button>
             <br/>
         </form>
         </div>)
@@ -27,4 +32,4 @@ const mapStateToProps = (state) => { //name is by convention
         }; //now it will appear as props
 }
 
-export default connect(mapStateToProps, {sendMsg})(MsgForm);
+export default connect(mapStateToProps, {sendMsg, clearMsg})(MsgForm);

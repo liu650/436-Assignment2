@@ -11,3 +11,10 @@ export const sendMsg = msg => {
         msg: msg
     };
 };
+
+
+export const clearMsg = () => {
+    return {
+        type: 'CLEAR'
+    };
+};
