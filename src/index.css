@@ -67,7 +67,7 @@ img {
     position: relative;
     top: 10px;
     width: 200px;
-    height: 240px;
+    height: 400px;
     border: 3px groove #73AD21;
     text-align: left;
     color: black;
@@ -95,6 +95,19 @@ img {
     border-color: black;
     margin: 1em;
     background-color: rgb(248, 230, 232);
+}
+
+.customButtonLittle {
+    font-size: 0.5em;
+    border-style: solid;
+    border-radius: 1em 1em 1em 1em;
+    border-color: black;
+    margin: 1em;
+    background-color: rgb(248, 230, 232);
+}
+
+.customButtonLittle:hover {
+    background-color: rgb(209, 110, 122);
 }
 
 .customButton:hover {

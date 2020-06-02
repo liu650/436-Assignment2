@@ -5,10 +5,11 @@ import Detail from './Detail';
 class MsgPane extends React.Component {
     
     render () {
-        return (<div> 
+        return (<div id="msgPane"> 
             
             <ul> 
-                 {generateList(this.props.msgObj.msgList)}</ul>
+                 {generateList(this.props.msgObj.msgList)}
+            </ul>
         </div>)
     }
 }
