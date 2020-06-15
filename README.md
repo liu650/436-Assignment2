@@ -1,1 +1,1 @@
-CPSC 436i Assignment2
+CPSC 436i Assignment
