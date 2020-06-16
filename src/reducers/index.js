@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-let n = new Date().toLocaleTimeString();
+let n = new Date();
 
 const counterReducer = (count = 0, action) => {
     if (action.type === 'INCREMENT_COUNTER') {
@@ -8,10 +8,16 @@ const counterReducer = (count = 0, action) => {
     }
     return count;
 };
-const msgReducer = (msgObj = { msgList: [{ msg: "Hello!", time: n }, { msg: "Say somthing", time: n }], msgTemp: "" }, action) => {
+const initialState = {
+    msgList: [
+        { msg: "Hello!", date: n.toLocaleDateString(), time: n.toLocaleTimeString()},
+        { msg: "Say something",  date: n.toLocaleDateString(), time: n.toLocaleTimeString()}],
+    msgTemp: ""
+}
+const msgReducer = (msgObj = initialState, action) => {
     if (action.type === 'SEND') {
 
-        return Object.assign({}, msgObj, { msgList: [...msgObj["msgList"], { msg: action.msg, time: new Date().toLocaleTimeString() }] });
+        return Object.assign({}, msgObj, { msgList: [...msgObj["msgList"], { msg: action.msg, date: new Date().toLocaleDateString(),time: new Date().toLocaleTimeString()}] });
     } else if (action.type === 'CLEAR') {
         return Object.assign({}, msgObj, { msgList: [] });
     } else if (action.type === 'DELETE') {
