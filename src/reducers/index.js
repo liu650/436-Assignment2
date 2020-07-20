@@ -1,29 +1,36 @@
 import { combineReducers } from 'redux';
 
+import action from '../actions/index.js'
 let n = new Date();
 
-const counterReducer = (count = 0, action) => {
-    if (action.type === 'INCREMENT_COUNTER') {
-        return count + action.amount;
-    }
-    return count;
-};
+// const counterReducer = (count = 0, action) => {
+//     if (action.type === 'INCREMENT_COUNTER') {
+//         return count + action.amount;
+//     }
+//     return count;
+// };
+
 const initialState = {
     msgList: [
         { msg: "Hello!", date: n.toLocaleDateString(), time: n.toLocaleTimeString()},
         { msg: "Say something",  date: n.toLocaleDateString(), time: n.toLocaleTimeString()}],
     msgTemp: ""
 }
-const msgReducer = (msgObj = initialState, action) => {
-    if (action.type === 'SEND') {
 
-        return Object.assign({}, msgObj, { msgList: [...msgObj["msgList"], { msg: action.msg, date: new Date().toLocaleDateString(),time: new Date().toLocaleTimeString()}] });
+const initialState2 = {msgList: [], msgTemp: ""};
+
+const msgReducer = (msgObj = initialState2,action) => {
+    if  (action.type === 'FETCH') {
+        return Object.assign({}, msgObj, {msgList: action.payload});
+    } else
+    if (action.type === 'SEND') {
+        return Object.assign({}, msgObj, { msgList: [...msgObj["msgList"], { msg: action.msg, date: new Date()}] });
     } else if (action.type === 'CLEAR') {
         return Object.assign({}, msgObj, { msgList: [] });
     } else if (action.type === 'DELETE') {
         let newObject = Object.assign({}, msgObj);
         newObject["msgList"].map((item) => {
-            if (item.msg == action.payload.msg && item.time == action.payload.time) {
+            if (item.msg == action.payload.msg && item.date == action.payload.date) {
                 newObject.msgList.splice(newObject["msgList"].indexOf(item), 1);
                 return;
             }
@@ -36,8 +43,10 @@ const msgReducer = (msgObj = initialState, action) => {
 };
 
 
+
+
 export default combineReducers({
-    count: counterReducer,
+    // count: counterReducer,
     msgObj: msgReducer
         // anotherKey: anotherReducer //all your reducers should be combined
 });

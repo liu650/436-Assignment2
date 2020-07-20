@@ -12,6 +12,7 @@ class MsgPane extends React.Component {
             </ul>
         </div>)
     }
+
 }
 const mapStateToProps = (state) => { //name is by convention
     return { msgObj: state.msgObj

@@ -20,7 +20,7 @@ class Details extends React.Component {
                {this.props.val["msg"]}
             <button className = "customButtonLittle" onClick = {this._onClick}> Open</button>
             <button className = "customButtonLittle" onClick = {() => this.props.deleteMsg(this.props.val)}> Delete</button>
-            {this.state.flag && <span>Sent at {this.props.val["time"]}</span>}
+            {this.state.flag && <span>Sent at {this.props.val["date"].getTime()}</span>}
             </div>
         )
     }

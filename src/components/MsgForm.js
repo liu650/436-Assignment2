@@ -18,7 +18,7 @@ class MsgForm extends React.Component{
         <form id="msgForm">
             <input className="inputbox" type="text" id="msgInput" ref = {this.input} onChange = {(e) =>{this.props.msgObj.msgTemp = e.target.value; }} />
             <br/>
-            <input className="customButton" type="button" value="SEND"  onClick={(e) => {this.props.sendMsg(this.props.msgObj.msgTemp); this.input.current.value=""}}/>
+            <input className="customButton" type="button" value="SEND" onClick={(e) => {this.props.sendMsg(this.props.msgObj.msgTemp); this.input.current.value=""}}/>
             <button className="customButton" type="button" onClick={() => {this.props.clearMsg()}}>CLEAR</button>
             <br/>
         </form>
